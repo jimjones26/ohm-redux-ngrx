@@ -10,10 +10,14 @@ import { ItemsService } from './_services/items.service';
 import 'rxjs/add/operator/map';
 
 import { selectedItemReducer, itemsReducer } from './_reducers/items.reducers';
+import { ItemsListComponent } from './items-list/items-list.component';
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ItemsListComponent,
+    ItemDetailComponent
   ],
   imports: [
     BrowserModule,
