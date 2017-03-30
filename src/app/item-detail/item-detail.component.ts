@@ -1,15 +1,21 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Output, EventEmitter, Input } from '@angular/core';
+import { Item } from '../_models/item.model';
 
 @Component({
   selector: 'app-item-detail',
   templateUrl: './item-detail.component.html',
   styleUrls: ['./item-detail.component.css']
 })
-export class ItemDetailComponent implements OnInit {
+export class ItemDetailComponent {
+  originalName: string;
+  selectedItem: Item;
+  @Output() saved = new EventEmitter();
+  @Output() cancelled = new EventEmitter();
 
-  constructor() { }
-
-  ngOnInit() {
+  @Input() set item(value: Item) {
+    if (value) {
+      this.originalName = value.name;
+    }
+    this.selectedItem = Object.assign({}, value);
   }
-
 }
