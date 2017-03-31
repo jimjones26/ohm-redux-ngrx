@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app.component';
 import { ItemsService } from './_services/items.service';
@@ -23,7 +24,10 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    StoreModule.provideStore({itemsReducer, selectedItemReducer})
+    StoreModule.provideStore({ itemsReducer, selectedItemReducer }),
+    StoreDevtoolsModule.instrumentOnlyWithExtension({
+      maxAge: 5
+    })
   ],
   providers: [ItemsService],
   bootstrap: [AppComponent]

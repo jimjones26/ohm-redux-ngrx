@@ -14,13 +14,39 @@ export class ItemsService {
 
   constructor(private http: Http, private store: Store<AppStore>) {
     this.items$ = store.select('items');
+    console.log('ItemsService items$ ', this.items$);
   }
 
   loadItems() {
+    const initialItems: Item[] = [
+      {
+        id: 1,
+        name: 'Item # One',
+        description: 'Item One description'
+      },
+      {
+        id: 2,
+        name: 'Item # Two',
+        description: 'Item Two description'
+      },
+      {
+        id: 3,
+        name: 'Item # Three',
+        description: 'Item Three description'
+      },
+      {
+        id: 4,
+        name: 'Item # Four',
+        description: 'Item Four description'
+      }
+    ];
+    this.store.dispatch({ type: 'ADD_ITEMS', payload: initialItems });
+    /*
     return this.http.get(BASE_URL)
       .map(res => res.json())
       .map(payload => ({ type: 'ADD_ITEMS', payload }))
       .subscribe(action => this.store.dispatch(action));
+      */
   }
 
   saveItem(item: Item) {

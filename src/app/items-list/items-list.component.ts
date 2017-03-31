@@ -10,4 +10,8 @@ export class ItemsListComponent {
   @Input() items: Item[];
   @Output() selected = new EventEmitter();
   @Output() deleted = new EventEmitter();
+
+  constructor() {
+    console.log('items list component items: ', this.items);
+  }
 }

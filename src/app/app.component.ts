@@ -8,8 +8,7 @@ import { AppStore } from './_models/app-store.model';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['./app.component.css']
 })
 export class AppComponent {
   items$: Observable<Array<Item>>;
@@ -18,5 +17,7 @@ export class AppComponent {
   constructor(private itemsService: ItemsService, private store: Store<AppStore>) {
     this.items$ = itemsService.items$;
     this.selectedItem$ = store.select('selectedItem');
+    this.selectedItem$.subscribe(v => console.log('selected item$:', v));
+    itemsService.loadItems();
   }
 }
